@@ -1,7 +1,13 @@
-<body>
-      <h1>ESP8266 Web Server</h1>
-      <h3>ID : " + id + "</h3>
-      <p><a href=\"javascript:void(0)\" onclick=\"window.location.reload();\"><button class=\"button\">Update</button></a></p>
-      <script>window.location.reload();</script>
-</body>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Simple HTML Page</title>
+  </head>
+  <body>
+      <h1>Welcome to My Simple HTML Page</h1>
+      <p>This is a paragraph of text on the page.</p>
+      <a href="#">This is a link</a>
+  </body>
   </html>
