@@ -20,16 +20,21 @@
             document.getElementById('tagId').innerText = newId;
         }
 
-        // Simulating the update process (you should replace this with actual data retrieval)
-        // This can be called whenever a new tag is read
-        function simulateTagRead() {
-            const simulatedId = "69 C9 D2 35"; // Example tag ID
-            updateTagId(simulatedId);
+        // Function to fetch the latest tag ID from the server
+        async function fetchTagId() {
+            try {
+                const response = await fetch('/get-latest-tag-id'); // Replace with your actual endpoint
+                const data = await response.json();
+                if (data && data.tagId) {
+                    updateTagId(data.tagId);
+                }
+            } catch (error) {
+                console.error('Error fetching tag ID:', error);
+            }
         }
 
-        // Call the simulation function for demo purposes
-        // In your actual implementation, call this function when you read a new NFC tag
-        simulateTagRead();
+        // Call the fetch function periodically to get the latest tag ID
+        setInterval(fetchTagId, 5000); // Fetch every 5 seconds
     </script>
 </body>
 </html>
