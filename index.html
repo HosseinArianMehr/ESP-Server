@@ -1,13 +1,35 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Simple HTML Page</title>
-  </head>
-  <body>
-      <h1>Welcome to My Simple HTML Page</h1>
-      <p>This is a paragraph of text on the page.</p>
-      <a href="#">This is a link</a>
-  </body>
-  </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <style>
+        html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center; }
+        .button { background-color: #195B6A; border: none; color: white; padding: 16px 40px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer; }
+        .button2 { background-color: #77878A; }
+    </style>
+</head>
+<body>
+    <h1>ESP8266 Web Server</h1>
+    <h3>ID: <span id="tagId">None</span></h3>
+    <p><a href="javascript:void(0)" onclick="window.location.reload();"><button class="button">Update</button></a></p>
+
+    <script>
+        // Function to update the tag ID dynamically
+        function updateTagId(newId) {
+            document.getElementById('tagId').innerText = newId;
+        }
+
+        // Simulating the update process (you should replace this with actual data retrieval)
+        // This can be called whenever a new tag is read
+        function simulateTagRead() {
+            const simulatedId = "69 C9 D2 35"; // Example tag ID
+            updateTagId(simulatedId);
+        }
+
+        // Call the simulation function for demo purposes
+        // In your actual implementation, call this function when you read a new NFC tag
+        simulateTagRead();
+    </script>
+</body>
+</html>
