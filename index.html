@@ -1,40 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="data:,">
-    <style>
-        html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center; }
-        .button { background-color: #195B6A; border: none; color: white; padding: 16px 40px; text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer; }
-        .button2 { background-color: #77878A; }
-    </style>
-</head>
-<body>
-    <h1>ESP8266 Web Server</h1>
-    <h3>ID: <span id="tagId">None</span></h3>
-    <p><a href="javascript:void(0)" onclick="window.location.reload();"><button class="button">Update</button></a></p>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tag ID Display</title>
+      <script>
+          async function fetchTagID() {
+              const response = await fetch('/getLatestTagID');
+              const data = await response.json();
+              document.getElementById('tagID').innerText = data.tagID || 'No tag detected';
+          }
 
-    <script>
-        // Function to update the tag ID dynamically
-        function updateTagId(newId) {
-            document.getElementById('tagId').innerText = newId;
-        }
-
-        // Function to fetch the latest tag ID from the server
-        async function fetchTagId() {
-            try {
-                const response = await fetch('/get-latest-tag-id'); // Replace with your actual endpoint
-                const data = await response.json();
-                if (data && data.tagId) {
-                    updateTagId(data.tagId);
-                }
-            } catch (error) {
-                console.error('Error fetching tag ID:', error);
-            }
-        }
-
-        // Call the fetch function periodically to get the latest tag ID
-        setInterval(fetchTagId, 5000); // Fetch every 5 seconds
-    </script>
-</body>
-</html>
+          setInterval(fetchTagID, 1000); // Fetch every second
+      </script>
+  </head>
+  <body>
+      <h1>Latest Tag ID</h1>
+      <div id="tagID">No tag detected</div>
+  </body>
+  </html>
